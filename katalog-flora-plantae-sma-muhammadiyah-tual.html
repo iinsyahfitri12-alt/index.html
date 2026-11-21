@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Katalog Digital Flora · Taksonomi Plantae SMA Muhammadiyah Tual</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23276040' d='M16 3C9 8 6 15 8 24c7-1 13-6 14-17-2 1-4 2-6 2 1-3 0-5 0-6z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#edf2e8; --bg2:#e4ecdd; --paper:#ffffff; --paper2:#f7faf4;
+  --ink:#1d2a20; --muted:#58685b; --faint:#84937f; --line:#d5dfcf;
+  --g900:#123323; --g800:#1b4730; --g700:#255c3c; --g600:#2f7348; --g500:#3f8a59; --g100:#e2ecdc; --g50:#f0f5ec;
+  --gold:#a8782a; --gold-bg:#f5ecd7;
+  --aman:#2b7a4c; --aman-bg:#e0f0e5;
+  --sedang:#96660f; --sedang-bg:#f7ecd0;
+  --fisik:#3f617d; --fisik-bg:#e2ebf2;
+  --bahaya:#bb5023; --bahaya-bg:#fbe6da;
+  --sangat:#a3231f; --sangat-bg:#f9dedd;
+  --serif:"Spectral", Georgia, "Times New Roman", serif;
+  --sans:"Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.6}
+img{max-width:100%;display:block}
+a{color:var(--g700)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+
+/* ===== Topbar ===== */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(18,51,35,.97);color:#eef4ea;border-bottom:1px solid rgba(255,255,255,.12)}
+.topbar .wrap{display:flex;align-items:center;gap:18px;height:56px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:16.5px;letter-spacing:.2px}
+.brand svg{flex:none}
+.brand small{display:block;font-family:var(--sans);font-weight:500;font-size:10.5px;color:#b9cdbb;letter-spacing:.6px;text-transform:uppercase}
+.nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+.nav a{color:#d8e4d6;text-decoration:none;font-size:13px;font-weight:600;padding:7px 11px;border-radius:8px}
+.nav a:hover{background:rgba(255,255,255,.1);color:#fff}
+@media(max-width:820px){.nav{display:none}}
+
+/* ===== Hero ===== */
+.hero{background:linear-gradient(160deg,var(--g900) 0%,var(--g800) 55%,var(--g700) 100%);color:#eef5ea;position:relative;overflow:hidden;padding:56px 0 96px}
+.hero::before{content:"";position:absolute;inset:0;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2'%3E%3Cpath d='M70 18c-22 18-30 40-24 70 22-6 38-26 38-58-8 5-15 6-22 6 5-8 8-13 8-18z'/%3E%3Cpath d='M20 110c12-14 26-20 46-18M118 46c-12 12-24 17-42 16'/%3E%3C/g%3E%3C/svg%3E");background-size:140px}
+.hero .wrap{position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:#cfe2c9;border:1px solid rgba(255,255,255,.25);padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.06)}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(28px,4.4vw,46px);line-height:1.18;margin:18px 0 14px;max-width:860px}
+.hero h1 em{color:#f3d98f}
+.hero .lead{max-width:760px;color:#d6e3d1;font-size:15.5px}
+.byline{margin-top:20px;font-size:13.5px;color:#c4d6bf}
+.byline b{color:#fff;font-weight:600}
+.hero-stats{margin-top:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:16px 18px}
+.stat .num{font-family:var(--serif);font-size:30px;font-weight:700;color:#fff;line-height:1.1}
+.stat .lbl{font-size:12px;color:#c2d4bd;margin-top:5px;font-weight:600;letter-spacing:.3px}
+@media(max-width:760px){.hero-stats{grid-template-columns:repeat(2,1fr)}}
+
+/* ===== Section shells ===== */
+section.block{padding:44px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sec-head h2{font-family:var(--serif);font-size:26px;font-weight:700;margin:0;color:var(--g900)}
+.sec-head .rule{flex:1;height:1px;background:var(--line)}
+.sec-sub{color:var(--muted);max-width:820px;margin:0 0 22px;font-size:14.5px}
+
+/* ===== About / method cards ===== */
+.two-col{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+.card h3{font-family:var(--serif);font-size:18px;margin:0 0 10px;color:var(--g800)}
+.card p{margin:0 0 10px;font-size:14.5px;color:#334236}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;margin-top:8px}
+.meta-grid .k{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--faint)}
+.meta-grid .v{font-size:14px;color:var(--ink);margin-top:2px}
+@media(max-width:820px){.two-col{grid-template-columns:1fr}}
+
+/* ===== Legend ===== */
+.legend-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.lvl-item{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:15px 16px}
+.lvl-item .dot{width:12px;height:12px;border-radius:50%;display:inline-block;margin-right:8px;vertical-align:middle}
+.lvl-item .t{font-weight:700;font-size:14px;vertical-align:middle}
+.lvl-item .d{font-size:12.5px;color:var(--muted);margin-top:8px}
+.grp-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.grp-chip{font-size:12.5px;font-weight:600;background:var(--g100);color:var(--g800);padding:6px 13px;border-radius:999px}
+@media(max-width:900px){.legend-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ===== Filter bar ===== */
+.catalog-toolbar{position:sticky;top:56px;z-index:40;background:rgba(237,242,232,.94);backdrop-filter:blur(6px);padding:14px 0;border-bottom:1px solid var(--line)}
+.toolbar-inner{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.search{position:relative;flex:1 1 240px;min-width:220px}
+.search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--faint)}
+.search input{width:100%;padding:11px 14px 11px 38px;border:1px solid var(--line);border-radius:11px;background:var(--paper);font-family:var(--sans);font-size:14px;color:var(--ink)}
+.search input:focus{outline:2px solid var(--g500);border-color:var(--g500)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--paper);color:var(--muted);font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:999px;cursor:pointer;font-family:var(--sans)}
+.chip:hover{border-color:var(--g500);color:var(--g700)}
+.chip.active{background:var(--g800);color:#fff;border-color:var(--g800)}
+.result-meta{font-size:12.5px;color:var(--muted);width:100%}
+.result-meta b{color:var(--g800)}
+
+/* ===== Catalog grid ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px;padding:24px 0 8px}
+.spec-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease}
+.spec-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(24,58,36,.13);border-color:#bcd0b4}
+.photo-wrap{position:relative;background:linear-gradient(180deg,#e8eee2,#dde6d6);padding:12px 12px 8px;aspect-ratio:4/4.35;display:flex;align-items:flex-start;justify-content:center}
+.photo-wrap img{width:100%;height:100%;object-fit:contain;border-radius:8px;background:#f3f6ef}
+.plate-no{position:absolute;top:18px;left:18px;background:rgba(255,255,255,.92);border:1px solid var(--line);font-family:var(--serif);font-size:11.5px;font-weight:600;color:var(--g800);padding:3px 9px;border-radius:7px;letter-spacing:.5px}
+.level-tag{position:absolute;top:18px;right:18px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:5px}
+.level-tag .dot{width:7px;height:7px;border-radius:50%}
+.body{padding:15px 17px 17px;display:flex;flex-direction:column;gap:8px;flex:1}
+.local{font-weight:700;font-size:15px;color:var(--ink);line-height:1.35}
+.sci{font-family:var(--serif);font-style:italic;font-size:13.5px;color:var(--g700);line-height:1.4}
+.spec-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
+.mchip{font-size:11px;font-weight:600;background:var(--g50);color:var(--g800);border:1px solid var(--line);padding:3px 9px;border-radius:999px}
+.danger-line{margin-top:auto;font-size:12.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:9px;display:flex;gap:8px;align-items:flex-start}
+.danger-line .ic{flex:none;margin-top:2px}
+.more{font-size:12.5px;font-weight:700;color:var(--g700)}
+.empty{display:none;text-align:center;padding:60px 20px;color:var(--muted)}
+.empty.show{display:block}
+
+/* ===== Conclusion ===== */
+.concl{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px 30px}
+.concl h3{font-family:var(--serif);color:var(--g900);margin:0 0 10px;font-size:19px}
+.concl p{font-size:14.5px;color:#334236;margin:0 0 12px}
+.warn-list{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:9px}
+.warn-list li{display:flex;gap:10px;align-items:flex-start;background:var(--bahaya-bg);border-left:3px solid var(--bahaya);padding:10px 14px;border-radius:0 10px 10px 0;font-size:13.5px}
+
+/* ===== References ===== */
+.refs{font-size:13.5px;color:#334236}
+.refs li{margin-bottom:9px}
+.refs ol{padding-left:22px;margin:0}
+
+footer{background:var(--g900);color:#cfe0c9;margin-top:40px;padding:30px 0 26px;font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+footer b{color:#fff;font-family:var(--serif)}
+
+/* ===== Modal ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(15,32,22,.62);z-index:100;display:none;align-items:flex-start;justify-content:center;padding:4vh 18px;overflow-y:auto}
+.modal-overlay.open{display:flex}
+.modal{background:var(--paper);border-radius:18px;width:100%;max-width:960px;overflow:hidden;box-shadow:0 28px 70px rgba(0,0,0,.35);animation:pop .18s ease}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.modal-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 24px;border-bottom:1px solid var(--line);background:var(--g50)}
+.modal-top .tt{font-family:var(--serif);font-weight:700;color:var(--g900);font-size:17px}
+.modal-close{border:1px solid var(--line);background:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;color:var(--muted);flex:none}
+.modal-close:hover{background:var(--g100)}
+.modal-body{display:grid;grid-template-columns:0.92fr 1.08fr;gap:0}
+.modal-photo{background:linear-gradient(180deg,#e8eee2,#dde6d6);padding:22px;display:flex;align-items:flex-start;justify-content:center}
+.modal-photo img{width:100%;max-height:560px;object-fit:contain;border-radius:10px;background:#f3f6ef}
+.modal-info{padding:22px 26px 26px}
+.modal-info .local{font-size:19px}
+.modal-info .sci{font-size:15px;margin-top:3px}
+.detail-sec{margin-top:16px}
+.detail-sec h4{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--faint);margin:0 0 8px;font-weight:700}
+.tax{width:100%;border-collapse:collapse;font-size:13.5px;table-layout:fixed}
+.tax th,.tax td{border:1px solid var(--line);padding:7px 11px;text-align:left;vertical-align:top}
+.tax th{width:38%;background:var(--g50);color:var(--g800);font-weight:600}
+.tax td{font-family:var(--serif)}
+.morph{margin:0;padding-left:18px;font-size:13.8px;color:#334236}
+.morph li{margin-bottom:5px}
+.benefit-box{background:var(--g100);border-radius:12px;padding:13px 16px;font-size:13.8px;color:#24452f}
+.danger-box{border-radius:12px;padding:13px 16px;font-size:13.8px;border:1px solid}
+.danger-box .dh{font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px;display:flex;align-items:center;gap:7px}
+@media(max-width:820px){.modal-body{grid-template-columns:1fr}.modal-photo{padding:16px}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true"><path fill="#9fd3ab" d="M16 3C9 8 6 15 8 24c7-1 13-6 14-17-2 1-4 2-6 2 1-3 0-5 0-6z"/></svg>
+      <div>HerBio-Lab Katalog<small>Flora Sekolah · Tual, Maluku</small></div>
+    </div>
+    <nav class="nav">
+      <a href="#tentang">Tentang</a>
+      <a href="#legenda">Legenda Bahaya</a>
+      <a href="#katalog">Katalog</a>
+      <a href="#kesimpulan">Kesimpulan</a>
+      <a href="#rujukan">Rujukan</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Inovasi Her-Bio-Lab · Pembelajaran Biologi Berbasis Proyek</span>
+    <h1>Katalog Digital Inventarisasi <em>Taksonomi Plantae</em> Lingkungan Sekolah SMA Muhammadiyah Tual</h1>
+    <p class="lead">Inventarisasi floristik 39 spesies tumbuhan (Plantae) di lingkungan sekolah, meliputi klasifikasi taksonomi lengkap Kingdom hingga Spesies, ciri morfologi, manfaat eko-medisinal, serta profil tingkat bahaya/toksisitas, dilengkapi dokumentasi fotografi lapangan.</p>
+    <p class="byline"><b>Iin Syahfitri Mardana, S.Pd., Gr.</b> — Guru Biologi, SMA Muhammadiyah Tual · Kolaborasi Peserta Didik Kelas X · 2026/2027</p>
+    <div class="hero-stats" id="heroStats"></div>
+  </div>
+</section>
+
+<section class="block" id="tentang">
+  <div class="wrap">
+    <div class="sec-head"><h2>Tentang Katalog</h2><div class="rule"></div></div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Latar Belakang & Abstrak</h3>
+        <p>Penelitian observasi floristik ini bertujuan menginventarisasi, mengidentifikasi tingkatan taksonomi, menganalisis ciri morfologi, serta mengkaji potensi manfaat dan profil tingkat bahaya (toksisitas) spesimen tumbuhan (Plantae) yang tumbuh di kawasan SMA Muhammadiyah Tual, Pulau Dullah Selatan, Kota Tual, Maluku.</p>
+        <p>Hasil eksplorasi mengidentifikasi 39 spesies tumbuhan yang terbagi ke dalam kelompok monokotil, dikotil, dan paku epifit. Keberagaman flora ini memiliki nilai guna tinggi: tanaman hias estetis, tanaman obat (TOGA), tanaman pangan, peneduh lanskap, hingga tanaman berpotensi toksik yang mengandung kristal kalsium oksalat atau getah latex pekat.</p>
+        <p>Katalog ini diharapkan menjadi sumber belajar Biologi berbasis biodiversitas lokal di SMA Muhammadiyah Tual.</p>
+      </div>
+      <div class="card">
+        <h3>Metode & Lokasi Penelitian</h3>
+        <p>Eksplorasi jelajah lapangan (<i>walk-through survey</i>) terhadap seluruh organ vegetatif dan generatif spesimen di taman, pekarangan, dan pagar sekolah; dokumentasi dengan kamera GPS Map Camera; determinasi melalui literatur taksonomi tropis, herbarium digital, dan pencocokan morfologi daun, batang, bunga, serta buah.</p>
+        <div class="meta-grid">
+          <div><div class="k">Lokasi</div><div class="v">SMA Muhammadiyah Tual, Kec. Pulau Dullah Selatan & Utara, Kota Tual, Maluku</div></div>
+          <div><div class="k">Koordinat</div><div class="v">Lat −5,609° s/d −5,610° · Long 132,754° s/d 132,755°</div></div>
+          <div><div class="k">Metode</div><div class="v">Walk-through survey + dokumentasi GPS Map Camera</div></div>
+          <div><div class="k">Analisis</div><div class="v">Taksonomi, morfologi, eko-medisinal, toksisitas (literatur farmakognosi & etnobotani)</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="legenda" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2>Legenda Tingkat Bahaya</h2><div class="rule"></div></div>
+    <p class="sec-sub">Setiap spesimen diberi profil keamanan sesuai hasil kajian toksisitas. Gunakan filter di bawah katalog untuk menampilkan kelompok tingkat bahaya tertentu.</p>
+    <div class="legend-grid" id="legendGrid"></div>
+    <div class="grp-row" id="groupRow"></div>
+  </div>
+</section>
+
+<section class="block" id="katalog" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2>Katalog Spesies</h2><div class="rule"></div></div>
+    <p class="sec-sub">Klik kartu spesies untuk membuka lembar detail: taksonomi lengkap, ciri morfologi, manfaat, dan profil bahaya. Nama ilmiah dicetak miring sesuai kaidah tata nama botani.</p>
+  </div>
+  <div class="catalog-toolbar">
+    <div class="wrap">
+      <div class="toolbar-inner">
+        <div class="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="text" id="searchInput" placeholder="Cari nama lokal, nama ilmiah, famili, atau ordo…">
+        </div>
+        <div class="chips" id="levelChips"></div>
+        <div class="chips" id="groupChips"></div>
+        <div class="result-meta" id="resultMeta"></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="emptyState">Tidak ada spesies yang cocok dengan filter pencarian. Coba kata kunci lain atau reset filter.</div>
+  </div>
+</section>
+
+<section class="block" id="kesimpulan" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2>Kesimpulan & Saran</h2><div class="rule"></div></div>
+    <div class="concl">
+      <h3>Kesimpulan</h3>
+      <p>Berdasarkan hasil inventarisasi dan analisis taksonomi terhadap 39 spesies tumbuhan di lingkungan SMA Muhammadiyah Tual, kawasan sekolah ini memiliki keanekaragaman flora yang sangat tinggi dan bervariasi. Tumbuhan teridentifikasi mencakup berbagai fungsi ekologis dan ekonomis: tanaman hias estetik, tanaman obat keluarga (TOGA), tanaman pangan, peneduh lingkungan, hingga tanaman berpotensi toksik.</p>
+      <h3 style="margin-top:18px">Saran Keamanan Biologis</h3>
+      <p>Beberapa spesies memiliki tingkat toksisitas tinggi, dan sebagian lain memiliki ancaman bahaya fisik berupa duri. Pihak sekolah disarankan memasang papan informasi edukatif (papan nama taksonomi & tingkat bahaya) di dekat tanaman tersebut untuk edukasi keamanan biologis bagi seluruh siswa dan warga sekolah, sekaligus mengoptimalkan keanekaragaman hayati ini sebagai media pembelajaran Biologi berbasis lingkungan lokal.</p>
+      <ul class="warn-list" id="warnList"></ul>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="rujukan" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2>Daftar Pustaka</h2><div class="rule"></div></div>
+    <div class="card refs">
+      <ol>
+        <li>Backer, C. A., &amp; Bakhuizen van den Brink, R. C. (1968). <i>Flora of Java (Spermatophytes Only)</i>. Vol. I–III. N.V. P. Noordhoff, Groningen.</li>
+        <li>Heyne, K. (1987). <i>Tumbuhan Berguna Indonesia</i>. Badan Penelitian dan Pengembangan Kehutanan, Departemen Kehutanan. Jakarta.</li>
+        <li>Judd, W. S., Campbell, C. S., Kellogg, E. A., Stevens, P. F., &amp; Donoghue, M. J. (2015). <i>Plant Systematics: A Phylogenetic Approach</i>. Sinauer Associates, Sunderland.</li>
+        <li>Steenis, C. G. G. J. van. (2006). <i>Flora untuk Sekolah di Indonesia</i>. PT Pradnya Paramita. Jakarta.</li>
+        <li>Tjitrosoepomo, G. (2010). <i>Taksonomi Tumbuhan (Spermatophyta)</i>. Gadjah Mada University Press. Yogyakarta.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b>HerBio-Lab · Katalog Taksonomi Plantae</b><br>SMA Muhammadiyah Tual, Kota Tual, Provinsi Maluku, Indonesia</div>
+    <div>Korespondensi: iinsyahfitri1209@gmail.com<br>Katalog digital pembelajaran Biologi berbasis proyek · Kelas X · 2026/2027</div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-top">
+      <div class="tt" id="modalTitle"></div>
+      <button class="modal-close" id="modalClose" aria-label="Tutup">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+const SPECIES = [{"n": 1, "local": "Rumput Teki / Rumput Padang", "sci": "Cyperus rotundus L. / Eleusine indica", "group": "mono", "kelas": "Liliopsida (Monokotil)", "ordo": "Poales", "famili": "Cyperaceae / Poaceae", "genus": "Cyperus / Eleusine", "species": "Cyperus rotundus L. / Eleusine indica", "morph": ["Batang berbentuk segitiga atau silindris berongga, terna herba perenial.", "Sistem perakaran serabut yang kuat, membentuk rimpang/umbi di bawah tanah.", "Daun sejajar, sempit, memanjang dengan pertulangan daun sejajar.", "Bunga kecil terkumpul dalam bulir/malai pada ujung batang."], "benefit": "Umbi rumput teki digunakan dalam obat tradisional sebagai analgesik, antiinflamasi, dan peluruh keringat. Juga berfungsi sebagai penutup tanah pencegah erosi.", "danger": "TIDAK BERBAHAYA BERACUN. Namun dapat menjadi gulma invasif yang mengganggu pertumbuhan tanaman hias taman.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/FM0QbfiufofnTFxtql8l4WBegdv", "level": "aman"}, {"n": 2, "local": "Gletang / Ketul / Rumput Bunga Putih", "sci": "Tridax procumbens L.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Asterales", "famili": "Asteraceae", "genus": "Tridax", "species": "Tridax procumbens L.", "morph": ["Batang herba menjalar atau tegak berbulu halus kaku.", "Daun berhadapan, lanset-jorong dengan tepi bergigi kasar.", "Bunga majemuk bongkol (capitulum), bunga tepi putih dan bunga tabung kuning.", "Buah akene berbulu (pappus) mudah diterbangkan angin."], "benefit": "Daun ditumbuk untuk menghentikan pendarahan luka luar (antiseptik alami) dan memiliki sifat antiradang serta pakan ternak.", "danger": "TIDAK BERBAHAYA. Aman tersentuh kulit manusia.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/R6yxbne1mooDFqxU21SlK60IgKc", "level": "aman"}, {"n": 3, "local": "Bunga Kertas Oranye / Bougainvillea Oranye", "sci": "Bougainvillea spectabilis Willd.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Caryophyllales", "famili": "Nyctaginaceae", "genus": "Bougainvillea", "species": "Bougainvillea spectabilis Willd.", "morph": ["Perdu memanjat atau pohon kecil berduri tajam pada batangnya.", "Seludang bunga (braktea) tipis seperti kertas berwarna oranye cerah.", "Daun tunggal oval atau cordata berseling.", "Akar tunggang dalam dan sangat tahan kekeringan."], "benefit": "Tanaman hias lanskap penyerap polutan udara dan peneduh taman.", "danger": "BERBAHAYA FISIK (DURI). Batangnya memiliki duri tajam yang dapat melukai kulit/tangan jika tidak berhati-hati saat pemangkasan.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/BPkCbD1nKo8r45xb9vHlDtYrgJf", "level": "fisik"}, {"n": 4, "local": "Bunga Kertas Merah Muda / Bougainvillea Pink", "sci": "Bougainvillea glabra Choisy", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Caryophyllales", "famili": "Nyctaginaceae", "genus": "Bougainvillea", "species": "Bougainvillea glabra Choisy", "morph": ["Perdu merambat kayu dengan duri halus pada batang.", "Braktea berwarna merah muda keunguan (magenta/pink) mencolok.", "Daun hijau tua mengkilap berbentuk jorong hingga lanset.", "Toleran terhadap pangkasan dan bonsai."], "benefit": "Tanaman hias pembuat pagar hidup, penahan erosi lereng pekarangan, dan estetika sekolah.", "danger": "BERBAHAYA FISIK (DURI). Duri batang dapat menimbulkan luka gores.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/LJNsbEnYCoAD9FxEGfUlYFCSgCf", "level": "fisik"}, {"n": 5, "local": "Lantana / Tembelekan / Cente Manis", "sci": "Lantana camara L.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Lamiales", "famili": "Verbenaceae", "genus": "Lantana", "species": "Lantana camara L.", "morph": ["Perdu tegak dengan batang segi empat berbulu dan berduri kecil.", "Daun berhadapan, berbau khas apabila diremas, tepi bergigi.", "Bunga payung mengelompok variasi warna oranye, kuning, merah, pink.", "Buah buni kecil kehitaman saat matang."], "benefit": "Tanaman hias penarik penyerbuk (kupu-kupu/lebah), obat tradisional pembalur memar dan gatal.", "danger": "BERBAHAYA (BERACUN JIKA TERTELAN). Buah hijau dan daunnya mengandung triterpenoid lantadene A & B yang toksik bagi manusia dan hewan jika tertelan.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/UiHabHhEioD6PXxKCJrltFH3gAd", "level": "bahaya"}, {"n": 6, "local": "Patah Tulang Variegata / Pedilanthus Variegata", "sci": "Euphorbia tithymaloides L. 'Variegata'", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Malpighiales", "famili": "Euphorbiaceae", "genus": "Euphorbia", "species": "Euphorbia tithymaloides L.", "morph": ["Batang berlekuk zig-zag, sukulen, bergetah putih susu (latex).", "Daun bercorak variegata (hijau, putih, krem, pink).", "Bunga kecil berbentuk perahu/sepatu merah.", "Tanaman hias tahan kering."], "benefit": "Tanaman hias pembatas jalur taman dan obat luar tradisional pembalur kapalan/kutil.", "danger": "BERBAHAYA (GETAH TOKSIK). Getah putih susu dapat menyebabkan iritasi parah, rasa terbakar pada kulit, dan gangguan mata jika terkena kontak langsung.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/PniObFCw6omskGxipXjl3CcfgPg", "level": "bahaya"}, {"n": 7, "local": "Keladi Baret / Caladium Tricolor", "sci": "Caladium bicolor (Aiton) Vent.", "group": "mono", "kelas": "Liliopsida (Monokotil)", "ordo": "Alismatales", "famili": "Araceae", "genus": "Caladium", "species": "Caladium bicolor", "morph": ["Daun berbentuk hati/perisai lebar.", "Corak warna daun merah/pink di tengah, bercak putih, dan tepi hijau tua.", "Tangkai daun memanjang muncul langsung dari umbi batang bawah tanah."], "benefit": "Tanaman hias pot penumpuk warna interior dan taman sekolah.", "danger": "BERBAHAYA (BERACUN JIKA TERTELAN/TERGIGIT). Mengandung kristal kalsium oksalat insolubel yang menyebabkan rasa terbakar intensif pada mulut, tenggorokan, dan pembengkakan saluran napas.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/ELjEbdOPUofRmYxMAkBlHPsUgQg", "level": "bahaya"}, {"n": 8, "local": "Lidah Mertua Variegata / Sansevieria Kuning", "sci": "Dracaena trifasciata 'Laurentii'", "group": "mono", "kelas": "Liliopsida (Monokotil)", "ordo": "Asparagales", "famili": "Asparagaceae", "genus": "Dracaena", "species": "Dracaena trifasciata", "morph": ["Daun tebal sukulen, kaku, tumbuh tegak seperti pedang.", "Warna hijau tua bercak horizontal dengan garis tepi kuning cerah.", "Rimpang (rhizoma) bawah tanah sebagai organ penyimpan air."], "benefit": "Pembersih udara alami (penyerap polutan karbondioksida, benzena, formaldehida) dan tanaman hias sangat tangguh.", "danger": "SEDANG (BERACUN BAGI HEWAN PELIHARAAN). Mengandung saponin yang dapat menyebabkan mual dan muntah jika tertelan dalam jumlah banyak.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/FXDFbnxUNoLeu6x288Kl8Tkmg6c", "level": "sedang"}, {"n": 9, "local": "Aglaonema Pink / Sri Rejeki Pink", "sci": "Aglaonema commutatum Schott", "group": "mono", "kelas": "Liliopsida (Monokotil)", "ordo": "Alismatales", "famili": "Araceae", "genus": "Aglaonema", "species": "Aglaonema commutatum Schott", "morph": ["Daun lonjong/lanset bercak pink dan hijau kemerahan.", "Tangkai daun berdaging tebal melingkupi batang basah.", "Perakaran serabut, menyukai tempat teduh."], "benefit": "Tanaman hias indoor penyaring racun udara ruangan dan peningkat keindahan.", "danger": "BERBAHAYA (BERACUN JIKA TERTELAN). Getah mengandung kristal kalsium oksalat yang memicu iritasi dan rasa gatal terbakar pada bibir serta lidah.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/NHAAbYjNKo2qhGxM8MBlCQrLgRe", "level": "bahaya"}, {"n": 10, "local": "Dumb Cane / Beras Kutah / Dieffenbachia", "sci": "Dieffenbachia seguine (Jacq.) Schott", "group": "mono", "kelas": "Liliopsida (Monokotil)", "ordo": "Alismatales", "famili": "Araceae", "genus": "Dieffenbachia", "species": "Dieffenbachia seguine", "morph": ["Daun lebar lonjong bercorak putih/krem menyebar di tengah helai hijau.", "Batang basah, tebal, berbuku-buku.", "Perawakan terna tegak."], "benefit": "Tanaman hias pekarangan peningkat kualitas lanskap visual.", "danger": "SANGAT BERBAHAYA (SANGAT TOKSIK). Getahnya sangat kaya kristal kalsium oksalat tajam (raphides) yang dapat membekukan pita suara (kehilangan suara sementara), kelumpuhan lidah, dan pembengkakan tenggorokan parah.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/MYhwbwUoVoHUFdxXGlglG5yWgHh", "level": "sangat"}, {"n": 11, "local": "Patah Tulang Hijau / Euphorbia Tirucalli", "sci": "Euphorbia tirucalli L.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Malpighiales", "famili": "Euphorbiaceae", "genus": "Euphorbia", "species": "Euphorbia tirucalli L.", "morph": ["Batang dan cabang hijau silindris sukulen seperti pensil/tulang.", "Daun sangat kecil dan cepat gugur (kaduk).", "Bergetah putih susu pekat."], "benefit": "Obat luar tradisional untuk menghilangkan kutil, kapalan, dan sakit gigi (aplikasi sangat hati-hati pada lubang gigi).", "danger": "SANGAT BERBAHAYA (TOKSIK & KOROSIF). Getah putihnya bersifat korosif, memicu iritasi kulit parah, melepuh, dan bahaya kebutaan permanen jika mengenai mata.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/N5VXbzIOYoosdVxC8k8lcCexgxb", "level": "sangat"}, {"n": 12, "local": "Pepaya", "sci": "Carica papaya L.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Brassicales", "famili": "Caricaceae", "genus": "Carica", "species": "Carica papaya L.", "morph": ["Pohon kecil tidak berkayu keras, batang lurus berongga.", "Daun tunggal menjari (palmatifidus) dengan tangkai panjang berongga.", "Getah putih mengandung enzim papain."], "benefit": "Buah kaya vitamin A, C, dan serat untuk pencernaan. Daunnya digunakan sebagai pelunak daging dan obat herbal antimalaria/pencernaan.", "danger": "TIDAK BERBAHAYA. Getah mentah hanya menyebabkan iritasi ringan pada kulit sensitif.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/QRWVbJA1noQ6SIxx7JolK4Jug4b", "level": "aman"}, {"n": 13, "local": "Kelengkeng / Lengkeng", "sci": "Dimocarpus longan Lour.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Sapindales", "famili": "Sapindaceae", "genus": "Dimocarpus", "species": "Dimocarpus longan Lour.", "morph": ["Pohon berkayu keras dengan tajuk rapat rindang.", "Daun majemuk menyirip berseling, hijau tua mengkilap.", "Buah bulat cokelat kekuningan dengan daging bening manis."], "benefit": "Buah konsumsi kaya antioksidan dan vitamin C. Pohon berfungsi sebagai peneduh pekarangan sekolah.", "danger": "TIDAK BERBAHAYA. Aman dikonsumsi.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/GGHsbjwTpozxybxdiofl5MZcgUf", "level": "aman"}, {"n": 14, "local": "Gelombang Cinta / Anthurium Gelombang Cinta", "sci": "Anthurium plowmanii Croat", "group": "mono", "kelas": "Liliopsida (Monokotil)", "ordo": "Alismatales", "famili": "Araceae", "genus": "Anthurium", "species": "Anthurium plowmanii Croat", "morph": ["Daun tebal kaku memanjang dengan tepi bergelombang khas.", "Urat daun menonjol tebal memanjang.", "Batang rimpang pendek berakar rapat."], "benefit": "Tanaman hias eksklusif peningkat estetika eksterior sekolah.", "danger": "SEDANG (BERACUN JIKA TERTELAN). Mengandung kristal kalsium oksalat yang menyebabkan iritasi mulut jika tergolong tertelan.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/OHZibq7LMoY6jmxqRykl7MqfgIc", "level": "sedang"}, {"n": 15, "local": "Kamboja Jepang / Adenium", "sci": "Adenium obesum (Forssk.) Roem. & Schult.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Gentianales", "famili": "Apocynaceae", "genus": "Adenium", "species": "Adenium obesum", "morph": ["Batang bawah membesar membentuk bonggol (caudex).", "Bunga terompet pink/merah/putih sangat menarik.", "Daun tunggal kaku mengelompok di ujung cabang."], "benefit": "Tanaman hias hiasan pot dan bonsai berestetika tinggi.", "danger": "BERBAHAYA (GETAH TOKSIK/KARDIOAKTIF). Getahnya mengandung glikosida jantung (obesoide/cardiac glycosides) yang dapat mengganggu irama jantung jika tertelan atau masuk aliran darah.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/DS9HblvyUoy926xcXHTljHoRglg", "level": "bahaya"}, {"n": 16, "local": "Srirejeki Kuning / Aglaonema Variegata Kuning", "sci": "Aglaonema commutatum Schott", "group": "mono", "kelas": "Liliopsida (Monokotil)", "ordo": "Alismatales", "famili": "Araceae", "genus": "Aglaonema", "species": "Aglaonema commutatum Schott", "morph": ["Daun lanset lebar corak hijau keemasan/krem.", "Tangkai daun melingkupi batang basah.", "Terna herbaceous menyukai tempat teduh."], "benefit": "Tanaman hias meja dan teras penyerap zat polutan sintetis.", "danger": "BERBAHAYA (BERACUN JIKA TERTELAN). Kalsium oksalat memicu rasa gatal dan panas pada mulut.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/PF0sbfOKCof0bxxy07zl6R9LgIc", "level": "bahaya"}, {"n": 17, "local": "Bambu Hoki / Dracaena Kuning / Dracaena Reflexa", "sci": "Dracaena reflexa Lam.", "group": "mono", "kelas": "Liliopsida (Monokotil)", "ordo": "Asparagales", "famili": "Asparagaceae", "genus": "Dracaena", "species": "Dracaena reflexa Lam.", "morph": ["Daun berbentuk pita/lanset melingkar rapat pada batang.", "Warna hijau muda kekuningan bertepi tegas.", "Batang tegak berkayu lunak."], "benefit": "Tanaman hias penyaring udara ruangan dan elemen dekorasi taman minimalis.", "danger": "TIDAK BERBAHAYA BAGI MANUSIA. Agak toksik bagi kucing/anjing jika tertelan (saponin).", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/TeIXbfL0qoL86BxrlVzlNfYXgZg", "level": "aman"}, {"n": 18, "local": "Pohon Mangga", "sci": "Mangifera indica L.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Sapindales", "famili": "Anacardiaceae", "genus": "Mangifera", "species": "Mangifera indica L.", "morph": ["Pohon kayu keras besar bertajuk rindang.", "Daun tunggal lanset beraroma khas bila diremas.", "Bunga majemuk malai di ujung ranting."], "benefit": "Buah konsumsi bernutrisi tinggi, kayu peneduh pekarangan, dan penahan angin (windbreak).", "danger": "TIDAK BERBAHAYA. Getah tangkai buah muda dapat memicu iritasi/gatal pada kulit sensitif karena kandungan urushiol/resinol.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/OJNAbboVGoLOhIxIJs9lxmVBgif", "level": "aman"}, {"n": 19, "local": "Palem Kuning / Palem Hias", "sci": "Dypsis lutescens (H.Wendl.) Beentje & J.Dransf.", "group": "mono", "kelas": "Liliopsida (Monokotil)", "ordo": "Arecales", "famili": "Arecaceae", "genus": "Dypsis", "species": "Dypsis lutescens", "morph": ["Tumbuh berumpun, batang beruas hijau kekuningan.", "Daun majemuk menyirip dengan pelepah kuning cerah.", "Akar serabut padat."], "benefit": "Tanaman hias lanskap tropis peningkat kelembapan udara dan penyerap polutan udara terunggul.", "danger": "TIDAK BERBAHAYA. Sangat aman ditanam di area bermain anak.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/TIkib9R7xoKL8Gx2tBylMhjigFg", "level": "aman"}, {"n": 20, "local": "Kencana Ungu / Ruellia / Kencana Liar", "sci": "Ruellia simplex C.Wright", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Lamiales", "famili": "Acanthaceae", "genus": "Ruellia", "species": "Ruellia simplex C.Wright", "morph": ["Batang persegi agak ungu kecokelatan.", "Bunga terompet warna ungu cerah mencolok.", "Buah polong kecil meletup jika basah saat kering."], "benefit": "Tanaman hias penutup tanah (groundcover), pelindung erosi tanah, dan obat tradisional penurun kadar gula darah.", "danger": "TIDAK BERBAHAYA.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/XfQOb7MNwo3xZ2xZ1Qgle9BjgIc", "level": "aman"}, {"n": 21, "local": "Ketul / Bunga Ajeran / Bidens Pilosa", "sci": "Bidens pilosa L.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Asterales", "famili": "Asteraceae", "genus": "Bidens", "species": "Bidens pilosa L.", "morph": ["Batang persegi (kuadrangularis) hijau keunguan berbulu.", "Daun majemuk menjari beranak daun 3–5 bergigi.", "Bunga majemuk bongkol, pita putih dan tabung kuning.", "Buah jarum hitam berduri kait."], "benefit": "Tumbuhan obat herbal antimikroba, antidiare, dan penyembuh luka bakar/kulit.", "danger": "TIDAK BERBAHAYA. Buahnya hanya dapat menempel kaku pada pakaian.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/E71LbwkTloAguhx5AWQl4AyTgmh", "level": "aman"}, {"n": 22, "local": "Beringin Variegata / Beringin Putih", "sci": "Ficus benjamina L. 'Variegata'", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Rosales", "famili": "Moraceae", "genus": "Ficus", "species": "Ficus benjamina L.", "morph": ["Pohon/perdu bergetah putih dengan cabang menjuntai.", "Daun jorong bercorak variegata putih krem dan hijau tua.", "Permukaan daun licin mengkilap."], "benefit": "Tanaman peneduh, penyaring polutan udara beracun, dan pengikat air tanah.", "danger": "SEDANG (IRITASI GETAH). Getah bening/putihnya dapat memicu iritasi kulit gatal pada individu sensitif.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/O1kDbMr5Uoux2exaAyhldvmegZb", "level": "sedang"}, {"n": 23, "local": "Tapak Dara / Catharanthus Roseus", "sci": "Catharanthus roseus (L.) G.Don", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Gentianales", "famili": "Apocynaceae", "genus": "Catharanthus", "species": "Catharanthus roseus", "morph": ["Herba/perdu kecil berkayu lunak.", "Daun jorong berurat tengah jelas.", "Bunga terompet 5 mahkota pink dengan pusat merah."], "benefit": "Tanaman obat penting sumber alkaloid vinblastin dan vinkristin (bahan kemoterapi kanker/leukemia) serta tanaman hias indah.", "danger": "SANGAT BERBAHAYA JIKA TERTELAN TANPA DOSIS MEDIS. Seluruh bagian tanaman beracun tinggi jika tertelan sembarangan karena mengandung alkaloid sitotoksik keras.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/Gdq9bScI6o4EsSxBqt1lCukkgTb", "level": "sangat"}, {"n": 24, "local": "Anomalan / Rumput Bayam Liar / Acalypha", "sci": "Acalypha indica L.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Malpighiales", "famili": "Euphorbiaceae", "genus": "Acalypha", "species": "Acalypha indica L.", "morph": ["Herba tegak berbulu tipis.", "Daun oval tepi bergigi halus.", "Bunga bulir kecil di ketiak daun dibungkus braktea."], "benefit": "Akar dan batangnya sangat disukai kucing (efek rileksasi mirip catnip) serta obat tradisional ekspektoran/asma.", "danger": "TIDAK BERBAHAYA BAGI MANUSIA.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/RdIZbTmlIoNuY6xPJ40lIaADgOb", "level": "aman"}, {"n": 25, "local": "Tanaman Semangka (Merambat)", "sci": "Citrullus lanatus (Thunb.) Matsum. & Nakai", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Cucurbitales", "famili": "Cucurbitaceae", "genus": "Citrullus", "species": "Citrullus lanatus", "morph": ["Herba menjalar bersulur spiral.", "Daun berlekuk dalam menjari berbulu kasar.", "Bunga kuning, buah pepo berdaging air manis."], "benefit": "Buah konsumsi pemenuh hidrasi, kaya likopen dan citrulline penjaga kesehatan jantung.", "danger": "TIDAK BERBAHAYA.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/NobGb4WsaoR5ZSxLhHBlN7sagyb", "level": "aman"}, {"n": 26, "local": "Pohon Pisang (Anakan)", "sci": "Musa paradisiaca L.", "group": "mono", "kelas": "Liliopsida (Monokotil)", "ordo": "Zingiberales", "famili": "Musaceae", "genus": "Musa", "species": "Musa paradisiaca L.", "morph": ["Batang semu (pseudostem) dari susunan pelepah rapat.", "Daun sangat lebar pertulangan sejajar.", "Memiliki rimpang/bonggol bawah tanah."], "benefit": "Buah konsumsi bernutrisi tinggi, daun untuk pembungkus alami, dan jantung pisang untuk olahan pangan.", "danger": "TIDAK BERBAHAYA. Getahnya hanya meninggalkan noda hitam tebal pada pakaian.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/EZ7DbLLpIoT8Kjx30FclyCYUgod", "level": "aman"}, {"n": 27, "local": "Pepaya Jepang / Chayamansa", "sci": "Cnidoscolus aconitifolius (Mill.) I.M.Johnst.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Malpighiales", "famili": "Euphorbiaceae", "genus": "Cnidoscolus", "species": "Cnidoscolus aconitifolius", "morph": ["Perdu berkayu lunak bergetah putih susu.", "Daun menjari lekuk dalam berujung lancip tebal.", "Mudah dikembangbiakkan stek."], "benefit": "Sayuran superfood kaya zat besi, kalsium, dan protein (wajib dimasak matang sebelum dimakan).", "danger": "BERBAHAYA JIKA DIMAKAN MENTAH. Daun mentah mengandung glikosida sianogenik yang melepaskan racun sianida. Racun terdekomposisi total dan aman setelah direbus/dimasak minimal 5–10 menit.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/KtSQbz0EBoyb8SxDtB3lnLtFgrd", "level": "bahaya"}, {"n": 28, "local": "Pohon Kelor / Moringa", "sci": "Moringa oleifera Lam.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Brassicales", "famili": "Moringaceae", "genus": "Moringa", "species": "Moringa oleifera Lam.", "morph": ["Pohon sedang berkayu lunak bercabang rapat.", "Daun majemuk menyirip ganda/tiga dengan anak daun bulat kecil.", "Buah polong bersegi tiga."], "benefit": "Miracle tree (tanaman ajaib) sumber antioksidan, antiinflamasi, perangsang ASI, dan suplemen nutrisi tingkat tinggi.", "danger": "TIDAK BERBAHAYA. Daun dan buahnya sangat aman dikonsumsi.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/IS74bHL5lopTRQxMkEvlZP0KgZb", "level": "aman"}, {"n": 29, "local": "Paku Picisan / Paku Duduk / Pyrrosia", "sci": "Pyrrosia piloselloides (L.) M.G.Price", "group": "paku", "kelas": "Polypodiopsida (Paku)", "ordo": "Polypodiales", "famili": "Polypodiaceae", "genus": "Pyrrosia", "species": "Pyrrosia piloselloides", "morph": ["Paku epifit menempel pada pohon/batu.", "Daun dimorfik (steril bulat tebal & fertil memanjang bersori cokelat).", "Rimpang merambat halus."], "benefit": "Obat herbal tradisional untuk meredakan batuk, radang gusi, dan sakit perut.", "danger": "TIDAK BERBAHAYA.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/UeG8bzwzKo8hfMxnMN5lQsc7gEf", "level": "aman"}, {"n": 30, "local": "Sirih Merambat / Sirih Hias", "sci": "Piper betle L.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Piperales", "famili": "Piperaceae", "genus": "Piper", "species": "Piper betle L.", "morph": ["Merambat dengan akar pelekat.", "Daun berbentuk hati berujung runcing beraroma aromatis khas.", "Pertulangan melengkung."], "benefit": "Antiseptik alami terunggul, obat pembersih kewanitaan, penghenti mimisan, dan pemelihara kesehatan mulut.", "danger": "TIDAK BERBAHAYA.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/N6vVbaEIgo72BPxyUcIlEgAog93", "level": "aman"}, {"n": 31, "local": "Cabai Rawit / Tanaman Cabai", "sci": "Capsicum frutescens L.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Solanales", "famili": "Solanaceae", "genus": "Capsicum", "species": "Capsicum frutescens L.", "morph": ["Perdu herba bercabang banyak.", "Daun tunggal jorong berujung runcing.", "Bunga putih di ketiak daun.", "Buah buni pedas kaya capsaicin."], "benefit": "Bumbu dapur utama, peningkat nafsu makan, dan perangsang metabolisme tubuh.", "danger": "IRITASI MATA & PENCERNAAN. Zat capsaicin menyebabkan rasa panas terbakar pada kulit, iritasi parah jika mengenai mata, dan sakit perut jika dikonsumsi berlebihan.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/Dlu4b48SeoCRiox0Db2lU3JAgQe", "level": "sedang"}, {"n": 32, "local": "Sereh Dapur / Serai", "sci": "Cymbopogon citratus (DC.) Stapf", "group": "mono", "kelas": "Liliopsida (Monokotil)", "ordo": "Poales", "famili": "Poaceae", "genus": "Cymbopogon", "species": "Cymbopogon citratus", "morph": ["Rumput perenial berumpun lebat.", "Daun pita memanjang bertepi kasar tajam.", "Pelepah berdaging aroma sitrus khas."], "benefit": "Bumbu penyedap masakan, bahan minyak atsiri serai (penolak nyamuk alami), dan teh herbal peluruh angin/relaksasi.", "danger": "BERBAHAYA FISIK (TEPI DAUN TAJAM). Tepi daunnya yang tajam dapat menggores kulit hingga terluka jika diraih secara kasar.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/S9mCbqMBNoH864xHndhlxVR1gPf", "level": "fisik"}, {"n": 33, "local": "Pohon Waru / Waru Laut", "sci": "Hibiscus tiliaceus L.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Malvales", "famili": "Malvaceae", "genus": "Hibiscus", "species": "Hibiscus tiliaceus L.", "morph": ["Pohon sedang berkayu percabangan lebar.", "Daun hati (cordata) lebar bertulang menjari.", "Bunga terompet kuning merona merah sore."], "benefit": "Pohon peneduh pesisir pantai penahan abrasi, daunnya untuk penyejuk rambut dan peluruh dahak obat batuk.", "danger": "TIDAK BERBAHAYA.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/UUH2bEVZ0oQm3CxOJ1ilzUCrgVe", "level": "aman"}, {"n": 34, "local": "Tembelekan / Lantana Liar", "sci": "Lantana camara L.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Lamiales", "famili": "Verbenaceae", "genus": "Lantana", "species": "Lantana camara L.", "morph": ["Perdu bersemak batang segi empat berduri halus.", "Daun berbau khas.", "Bunga payung oranye-kuning-merah.", "Buah kehitaman."], "benefit": "Tanaman hias pembatas pekarangan dan tanaman penarik serangga penyerbuk ekosistem.", "danger": "BERBAHAYA JIKA TERTELAN. Buah hijau mengandung toksin lantadene yang memicu gangguan hati dan depresi sistem saraf pada hewan/manusia.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/T2wmb4didobgBrx3Ch9ltE8dgve", "level": "bahaya"}, {"n": 35, "local": "Pohon Jambu Biji / Guava", "sci": "Psidium guajava L.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Myrtales", "famili": "Myrtaceae", "genus": "Psidium", "species": "Psidium guajava L.", "morph": ["Pohon kecil berkulit batang licin tembaga mengelupas.", "Daun jorong tumpul urat menyirip jelas.", "Bunga putih berbenang sari banyak."], "benefit": "Buah konsumsi penaik trombosit darah (demam berdarah), dan daun rebusannya adalah obat diare & antibakteri paling ampuh.", "danger": "TIDAK BERBAHAYA.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/R7dlbN2Uso8bmnxT56ulaBlTgXf", "level": "aman"}, {"n": 36, "local": "Bayam Duri / Bayam Liar", "sci": "Amaranthus spinosus L.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Caryophyllales", "famili": "Amaranthaceae", "genus": "Amaranthus", "species": "Amaranthus spinosus L.", "morph": ["Herba tegak berkayu lunak.", "Memiliki duri kaku tajam pada ketiak daun.", "Bunga bulir rapat di ketiak daun dan ujung."], "benefit": "Tumbuhan obat tradisional peluruh kencing (diuretik), pembuat bisul cepat matang, dan penawar racun gigitan ular ringan.", "danger": "BERBAHAYA FISIK (DURI TAJAM). Duri ketiak daun sangat tajam dan dapat tertancap di tangan jika tertusuk.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/DY2wbaXf2oJqo1xXyyclYNkrgRf", "level": "fisik"}, {"n": 37, "local": "Pohon Suren / Surian / Mapala", "sci": "Toona sureni (Blume) Merr.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Sapindales", "famili": "Meliaceae", "genus": "Toona", "species": "Toona sureni (Blume) Merr.", "morph": ["Pohon berkayu keras sangat tinggi (40–60 m).", "Daun majemuk menyirip ganjil/genap memanjang di tajuk.", "Aroma wangi cedar khas pada kayu/daun."], "benefit": "Pohon penghasil kayu pertukangan bernilai ekonomi tinggi, peneduh lingkungan sekolah, dan pemecah angin (windbreak). Kulit batang digunakan sebagai obat disentri.", "danger": "TIDAK BERBAHAYA. Aman bagi lingkungan sekolah.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/ZoiebENHzo93Jxx4jAClmVgSgMe", "level": "aman"}, {"n": 38, "local": "Pohon Flamboyan / Semarak Api", "sci": "Delonix regia (Bojer ex Hook.) Raf.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Fabales", "famili": "Fabaceae", "genus": "Delonix", "species": "Delonix regia (Bojer ex Hook.) Raf.", "morph": ["Pohon peneduh bertajuk sangat lebar berbentuk payung.", "Daun majemuk menyirip ganda dua (bipinnate) sangat halus rapat.", "Bunga merah jingga mekar indah."], "benefit": "Pohon peneduh utama lapangan/halaman sekolah penyerap panas matahari dan penambah keindahan lanskap visual.", "danger": "TIDAK BERBAHAYA. Biji tua dalam polong tebal cukup kaku.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/DzOKbw5Muo2MuZxB4iTlhzgSgDh", "level": "aman"}, {"n": 39, "local": "Pohon Tanjung / Sawo Manuk / Lolangke", "sci": "Mimusops elengi L.", "group": "di", "kelas": "Magnoliopsida (Dikotil)", "ordo": "Ericales", "famili": "Sapotaceae", "genus": "Mimusops", "species": "Mimusops elengi L.", "morph": ["Pohon sedang-besar bertajuk lebat bulat peneduh.", "Daun tunggal jorong tebal (coriaceous) mengkilap tepi bergelombang.", "Bunga kecil putih krem beraroma sangat harum semerbak."], "benefit": "Pohon peneduh terbaik penyaring debu, bunganya digunakan sebagai pengharum alami/ronce hiasan, dan air rebusan kulit batangnya untuk obat penguat gusi/sariawan.", "danger": "TIDAK BERBAHAYA. Sangat aman dan ideal untuk lingkungan sekolah.", "img": "https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/LgBRbKk0WoMh9sxRjknlYqPCg7c", "level": "aman"}];
+
+const LEVEL = {
+  aman:   {label:"Aman",          short:"Tidak berbahaya",            color:"var(--aman)",   bg:"var(--aman-bg)"},
+  sedang: {label:"Waspada",       short:"Iritasi ringan / racun hewan peliharaan", color:"var(--sedang)", bg:"var(--sedang-bg)"},
+  fisik:  {label:"Bahaya Fisik",  short:"Duri tajam atau tepi daun melukai kulit",  color:"var(--fisik)",  bg:"var(--fisik-bg)"},
+  bahaya: {label:"Berbahaya",     short:"Getah toksik / racun bila tertelan",      color:"var(--bahaya)", bg:"var(--bahaya-bg)"},
+  sangat: {label:"Sangat Berbahaya", short:"Toksin kuat, korosif, atau efek sistemik", color:"var(--sangat)", bg:"var(--sangat-bg)"}
+};
+const GROUP = {
+  mono:{label:"Monokotil"},
+  di:{label:"Dikotil"},
+  paku:{label:"Paku (Pteridophyta)"}
+};
+const ICONS = {
+  aman:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3l7 3v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>',
+  sedang:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17h.01"/></svg>',
+  fisik:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3c1.5 3 4 4.5 7 5-3 1.5-5.5 3-7 9-1.5-6-4-7.5-7-9 3-.5 5.5-2 7-5z"/></svg>',
+  bahaya:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg>',
+  sangat:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M12 8v5M12 16.5h.01"/></svg>'
+};
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const pad = n => String(n).padStart(2,"0");
+const divisiOf = r => r.group === "paku" ? "Pteridophyta" : "Tracheophyta";
+
+/* ---------- Statistik hero ---------- */
+(function renderStats(){
+  const fam = new Set(SPECIES.map(r=>r.famili)).size;
+  const tinggi = SPECIES.filter(r=>r.level==="bahaya"||r.level==="sangat").length;
+  const aman = SPECIES.filter(r=>r.level==="aman").length;
+  document.getElementById("heroStats").innerHTML = [
+    [SPECIES.length,"Spesies tumbuhan terinventarisasi"],
+    [fam,"Famili botani tercatat"],
+    [tinggi,"Spesies berisiko berbahaya–sangat"],
+    [aman,"Spesies aman bagi lingkungan sekolah"]
+  ].map(([n,l])=>`<div class="stat"><div class="num">${n}</div><div class="lbl">${l}</div></div>`).join("");
+})();
+
+/* ---------- Legenda ---------- */
+(function renderLegend(){
+  document.getElementById("legendGrid").innerHTML = Object.keys(LEVEL).map(k=>{
+    const v=LEVEL[k];
+    return `<div class="lvl-item"><span class="dot" style="background:${v.color}"></span><span class="t" style="color:${v.color}">${v.label}</span><div class="d">${v.short}</div></div>`;
+  }).join("");
+  document.getElementById("groupRow").innerHTML =
+    `<span class="grp-chip">Kelas tumbuhan:</span>` +
+    Object.keys(GROUP).map(k=>`<span class="grp-chip">${GROUP[k].label} · ${SPECIES.filter(r=>r.group===k).length} spesies</span>`).join("");
+})();
+
+/* ---------- Filter state ---------- */
+const state = {q:"", level:"all", group:"all"};
+
+function chip(label, val, active, onClick){
+  return `<button class="chip ${active?"active":""}" data-click="${onClick}" data-val="${esc(val)}">${label}</button>`;
+}
+function renderChips(){
+  const lc = [{k:"all",label:"Semua tingkat bahaya"},...Object.keys(LEVEL).map(k=>({k,label:LEVEL[k].label}))];
+  document.getElementById("levelChips").innerHTML = lc.map(o=>
+    `<button class="chip ${state.level===o.k?"active":""}" data-filter="level" data-val="${o.k}">${o.label}${o.k!=="all"?` (${SPECIES.filter(r=>r.level===o.k).length})`:""}</button>`).join("");
+  const gc = [{k:"all",label:"Semua kelas"},{k:"mono",label:"Monokotil"},{k:"di",label:"Dikotil"},{k:"paku",label:"Paku"}];
+  document.getElementById("groupChips").innerHTML = gc.map(o=>
+    `<button class="chip ${state.group===o.k?"active":""}" data-filter="group" data-val="${o.k}">${o.label}</button>`).join("");
+}
+document.getElementById("levelChips").addEventListener("click",e=>{
+  const b=e.target.closest("[data-filter]"); if(!b)return;
+  state.level=b.dataset.val; renderChips(); renderGrid();
+});
+document.getElementById("groupChips").addEventListener("click",e=>{
+  const b=e.target.closest("[data-filter]"); if(!b)return;
+  state.group=b.dataset.val; renderChips(); renderGrid();
+});
+document.getElementById("searchInput").addEventListener("input",e=>{state.q=e.target.value.trim().toLowerCase();renderGrid();});
+
+function filtered(){
+  return SPECIES.filter(r=>{
+    if(state.level!=="all" && r.level!==state.level) return false;
+    if(state.group!=="all" && r.group!==state.group) return false;
+    if(state.q){
+      const hay=[r.local,r.sci,r.famili,r.ordo,r.genus,r.species,GROUP[r.group].label,LEVEL[r.level].label].join(" ").toLowerCase();
+      if(!hay.includes(state.q)) return false;
+    }
+    return true;
+  });
+}
+
+function cardHTML(r){
+  const v=LEVEL[r.level];
+  return `<article class="spec-card" data-n="${r.n}">
+    <div class="photo-wrap">
+      <span class="plate-no">Spesimen ${pad(r.n)}</span>
+      <span class="level-tag" style="background:${v.bg};color:${v.color}"><span class="dot" style="background:${v.color}"></span>${v.label}</span>
+      <img src="${r.img}" alt="Foto lapangan ${esc(r.local)} — ${esc(r.sci)}" loading="lazy">
+    </div>
+    <div class="body">
+      <div class="local">${esc(r.local)}</div>
+      <div class="sci">${esc(r.sci)}</div>
+      <div class="spec-meta">
+        <span class="mchip">Famili ${esc(r.famili)}</span>
+        <span class="mchip">${GROUP[r.group].label}</span>
+      </div>
+      <div class="danger-line"><span class="ic" style="color:${v.color}">${ICONS[r.level]}</span><span>${v.short}</span></div>
+      <span class="more">Buka lembar spesimen lengkap</span>
+    </div>
+  </article>`;
+}
+
+function renderGrid(){
+  const list=filtered();
+  document.getElementById("grid").innerHTML = list.map(cardHTML).join("");
+  document.getElementById("emptyState").classList.toggle("show",list.length===0);
+  document.getElementById("resultMeta").innerHTML = `Menampilkan <b>${list.length}</b> dari ${SPECIES.length} spesies`;
+}
+
+/* ---------- Modal detail ---------- */
+const overlay=document.getElementById("modalOverlay");
+document.getElementById("grid").addEventListener("click",e=>{
+  const c=e.target.closest(".spec-card"); if(!c)return;
+  openModal(+c.dataset.n);
+});
+function taxRow(k,val){return `<tr><th>${k}</th><td>${esc(val)}</td></tr>`;}
+function openModal(n){
+  const r=SPECIES.find(x=>x.n===n); if(!r)return;
+  const v=LEVEL[r.level];
+  document.getElementById("modalTitle").textContent = `Spesimen ${pad(r.n)} · ${r.local}`;
+  document.getElementById("modalBody").innerHTML = `
+    <div class="modal-photo"><img src="${r.img}" alt="Foto lapangan ${esc(r.local)}"></div>
+    <div class="modal-info">
+      <div class="local" style="font-weight:700;font-size:18px">${esc(r.local)}</div>
+      <div class="sci" style="font-family:var(--serif);font-style:italic;color:var(--g700);font-size:14.5px;margin-top:3px">${esc(r.sci)}</div>
+      <div class="spec-meta" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
+        <span class="mchip">Famili ${esc(r.famili)}</span>
+        <span class="mchip">Ordo ${esc(r.ordo)}</span>
+        <span class="mchip">${GROUP[r.group].label}</span>
+      </div>
+      <div class="detail-sec">
+        <h4>Klasifikasi Taksonomi Lengkap</h4>
+        <table class="tax">
+          ${taxRow("Kingdom","Plantae")}
+          ${taxRow("Divisi",divisiOf(r))}
+          ${taxRow("Kelas",r.kelas)}
+          ${taxRow("Ordo",r.ordo)}
+          ${taxRow("Famili",r.famili)}
+          ${taxRow("Genus",r.genus)}
+          ${taxRow("Spesies",r.species)}
+        </table>
+      </div>
+      <div class="detail-sec">
+        <h4>Ciri-Ciri Morfologi Utama</h4>
+        <ul class="morph">${r.morph.map(m=>`<li>${esc(m)}</li>`).join("")}</ul>
+      </div>
+      <div class="detail-sec">
+        <h4>Manfaat Eko-Medisinal & Kebun</h4>
+        <div class="benefit-box">${esc(r.benefit)}</div>
+      </div>
+      <div class="detail-sec">
+        <h4>Profil Bahaya & Toksisitas</h4>
+        <div class="danger-box" style="background:${v.bg};color:${v.color}">
+          <div class="dh">${ICONS[r.level]} ${v.label}</div>
+          <div style="color:#33281f">${esc(r.danger)}</div>
+        </div>
+      </div>
+    </div>`;
+  overlay.classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function closeModal(){overlay.classList.remove("open");document.body.style.overflow="";}
+document.getElementById("modalClose").addEventListener("click",closeModal);
+overlay.addEventListener("click",e=>{if(e.target===overlay)closeModal();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+
+/* ---------- Daftar peringatan di kesimpulan ---------- */
+(function renderWarnings(){
+  const high = SPECIES.filter(r=>["sangat","bahaya","fisik"].includes(r.level));
+  document.getElementById("warnList").innerHTML = high.map(r=>{
+    const v=LEVEL[r.level];
+    return `<li><span style="color:${v.color};flex:none;margin-top:1px">${ICONS[r.level]}</span><span><b style="color:${v.color}">${v.label} — ${esc(r.local)}</b> <i style="font-family:var(--serif)">(${esc(r.sci)})</i>. ${esc(r.danger)}</span></li>`;
+  }).join("");
+})();
+
+renderChips();
+renderGrid();
+</script>
+</body>
+</html>
